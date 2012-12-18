@@ -97,8 +97,6 @@ function! s:Tmux_Vars()
   endif
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 vmap <unique> <Plug>SendSelectionToTmux "ry :call Send_to_Tmux(@r)<CR>
 nmap <unique> <Plug>NormalModeSendToTmux vip <Plug>SendSelectionToTmux
 
