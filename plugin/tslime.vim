@@ -76,13 +76,15 @@ function! s:Tmux_Vars()
 
   let windows = split(s:TmuxWindows(), "\n")
   if len(windows) == 1
-    let g:tslime['window'] = substitute(windows[0], ":.*$" , '', 'g')
+    let window = windows[0]
   else
-    let g:tslime['window'] = substitute(input("window name: ", "", "custom,Tmux_Window_Names"), ":.*$" , '', 'g')
-    if g:tslime['window'] == ''
-      let g:tslime['window'] = '0'
+    let window = input("window name: ", "", "custom,Tmux_Window_Names")
+    if window == ''
+      let window = windows[0]
     endif
   endif
+
+  let g:tslime['window'] =  substitute(window, ":.*$" , '', 'g')
 
   let panes = split(s:TmuxPanes(), "\n")
   if len(panes) == 1
@@ -90,7 +92,7 @@ function! s:Tmux_Vars()
   else
     let g:tslime['pane'] = input("pane number: ", "", "custom,Tmux_Pane_Numbers")
     if g:tslime['pane'] == ''
-      let g:tslime['pane'] = '0'
+      let g:tslime['pane'] = panes[0]
     endif
   endif
 endfunction
