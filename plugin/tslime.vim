@@ -54,7 +54,7 @@ function! s:TmuxSessions()
 endfunction
 
 function! s:TmuxWindows()
-  return system('tmux list-windows -t "' . g:tslime['session'] . '" | grep -e "^\w:" | sed -e "s/ \[[0-9x]*\]$//"')
+  return system('tmux list-windows -t "' . g:tslime['session'] . '" | grep -e "^\w:" | sed -e "s/\s*([0-9].*//g"')
 endfunction
 
 function! s:TmuxPanes()
