@@ -26,7 +26,8 @@ function! s:tmux_target()
 endfunction
 
 function! s:set_tmux_buffer(text)
-  call system("echo '" . substitute(a:text, "'", "'\\\\''", 'g') . "' | tmux load-buffer -" )
+  let buf = substitute(a:text, "'", "\\'", 'g')
+  call system("tmux load-buffer -", buf)
 endfunction
 
 function! SendToTmux(text)
