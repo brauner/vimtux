@@ -16,7 +16,15 @@ will paste to pane 0 of the window.
 Setting Keybindings
 -------------------
 
-In this fork of tslime.vim, keybindings are not set automatically
+(1) This fork provides the ability to send multiple keys to a tmux target
+at once.
+
+(2) The tmux target is set on buffer basis. This means that every tab in
+Vim can have its own tmux target. (E.g. you could have a tab in which you
+edit a Python script and send text and keys to a Python repl and another
+tab in which you edit an R script and send text and keys to an R repl.)
+
+(3) In this fork of tslime.vim, keybindings are not set automatically
 for you. Instead, you can map whatever you'd like to one of the
 plugin-specific bindings in your `.vimrc` file.
 
