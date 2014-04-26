@@ -1,7 +1,9 @@
-" Tslime.vim. Send portion of buffer to tmux instance
+" File: tslime.vim
+" Code by: C. Coutinho <kikijump [at] gmail [dot] com>,
+"          C. Brauner <christianvanbrauner [at] gmail [dot] com>,
+"          K. Borges <kassioborges [at] gmail [dot] com>
 " Maintainer: C.Coutinho <kikijump [at] gmail [dot] com>
-" Additional code bits by kassio
-" Licence:    DWTFYWTPL
+" Last edited: 2014-04-26T11:56+01:00
 
 if exists("g:loaded_tslime") && g:loaded_tslime
     finish
@@ -54,17 +56,17 @@ function! SendTmux(text)
     call SendToTmux(a:text)
 endfunction
 
-" Session completion
+" Session completion.
 function! TmuxSessionNames(A,L,P)
     return <SID>TmuxSessions()
 endfunction
 
-" Window completion
+" Window completion.
 function! TmuxWindowNames(A,L,P)
     return <SID>TmuxWindows()
 endfunction
 
-" Pane completion
+" Pane completion.
 function! TmuxPaneNumbers(A,L,P)
     return <SID>TmuxPanes()
 endfunction
@@ -74,10 +76,10 @@ function! s:TmuxSessions()
     return sessions
 endfunction
 
-" To set the TmuxTarget globally rather than locally substitute 'g:' for
-" all instances of 'b:' below and delete the 'if exists("g:tslime") let
-" b:tslime = g:tslime' condition in the definition of the
-" 'SendToTmux(text)' function above.
+" To set the TmuxTarget globally rather than locally substitute 'g:' for all
+" instances of 'b:' below and delete the 'if exists("g:tslime") let b:tslime =
+" g:tslime' condition in the definition of the 'SendToTmux(text)' function
+" above.
 function! s:TmuxWindows()
     return system('tmux list-windows -t "' . b:tslime['session'] . '" | grep -e "^\w:" | sed -e "s/\s*([0-9].*//g"')
 endfunction
