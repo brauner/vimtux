@@ -131,6 +131,7 @@ nmap <unique> <Plug>SetTmuxVars :call <SID>TmuxVars()<CR>
 
 nmap <unique> <Plug>ExecuteKeysCc :call ExecuteKeys("C-c")<CR>
 nmap <unique> <Plug>ExecuteKeysCl :call ExecuteKeys("C-l")<CR>
+nmap <unique> <Plug>ExecuteKeysPrompt :call ExecuteKeys("
 
 command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 
@@ -141,4 +142,4 @@ command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 "
 "nmap <C-c> <Plug>ExecuteKeysCc
 "nmap <C-l> <Plug>ExecuteKeysCl
-
+"nmap <Leader>sk <Plug>ExecuteKeysPrompt
