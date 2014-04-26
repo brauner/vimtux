@@ -129,4 +129,16 @@ nmap <unique> <Plug>NormalModeSendToTmux V <Plug>SendSelectionToTmux
 
 nmap <unique> <Plug>SetTmuxVars :call <SID>TmuxVars()<CR>
 
+nmap <unique> <Plug>ExecuteKeysCc :call ExecuteKeys("C-c")<CR>
+nmap <unique> <Plug>ExecuteKeysCl :call ExecuteKeys("C-l")<CR>
+
 command! -nargs=* Tmux call SendToTmux('<Args><CR>')
+
+" One possible way to map keys.
+"vmap <Space><Space> <Plug>SendSelectionToTmux
+"nmap <Space><Space> <Plug>NormalModeSendToTmux
+"nmap <Space>r <Plug>SetTmuxVars
+"
+"nmap <C-c> <Plug>ExecuteKeysCc
+"nmap <C-l> <Plug>ExecuteKeysCl
+
