@@ -13,17 +13,41 @@ let g:loaded_tslime = 1
 
 " Send keys to tmux.
 function! ExecuteKeys(keys)
+    if !exists("b:tslime")
+        if exists("g:tslime")
+            " This bit sets the target on buffer basis so every tab can have its
+            " own target.
+            let b:tslime = g:tslime
+        else
+            call <SID>TmuxVars()
+        end
+    end
     call system("tmux send-keys -t " . s:TmuxTarget() . " " . a:keys)
 endfunction
 
 function! SendKeysToTmux(keys)
-    if !exists("g:tslime")
-        call <SID>TmuxVars()
-    end
     for k in split(a:keys, '\s')
         call <SID>ExecuteKeys(k)
     endfor
 endfunction
+
+" Function to send a key that asks for user input.
+function! ExecuteKeysPrompt()
+    call inputsave()
+    let l:command = input("Enter Keycode: ")
+    call inputrestore()
+    call ExecuteKeys(l:command)
+endfunction
+
+" Function to send text that asks for user input.
+function! SendToTmuxPrompt()
+    call inputsave()
+    let l:text = input("Enter Text: ")
+    call inputrestore()
+    call SendToTmux(l:text)
+    call ExecuteKeys("Enter")
+endfunction
+
 
 " Main function.
 function! SendToTmux(text)
@@ -124,22 +148,47 @@ function! s:TmuxVars()
     endif
 endfunction
 
+
+" <Plug> definition for SendToTmux().
 vmap <unique> <Plug>SendSelectionToTmux y :call SendToTmux(@")<CR>
+
+" <Plug> definition for SendSelectionToTmu().
 nmap <unique> <Plug>NormalModeSendToTmux V <Plug>SendSelectionToTmux
 
+" <Plug> definition for SetTmuxVars().
 nmap <unique> <Plug>SetTmuxVars :call <SID>TmuxVars()<CR>
 
+" <Plug> definition for "C-c" and "C-l" shortcuts.
 nmap <unique> <Plug>ExecuteKeysCc :call ExecuteKeys("C-c")<CR>
 nmap <unique> <Plug>ExecuteKeysCl :call ExecuteKeys("C-l")<CR>
-nmap <unique> <Plug>ExecuteKeysPrompt :call ExecuteKeys("
+
+
+" <Plug> definition for ExecuteKeysPrompt().
+nmap <unique> <Plug>ExecuteKeysPlug :call ExecuteKeysPrompt()<CR>
+
+" <Plug> definition for SendToTmuxPrompt().
+nmap <unique> <Plug>SendToTmuxPlug :call SendToTmuxPrompt()<CR>
 
 command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 
-" One possible way to map keys.
-"vmap <Space><Space> <Plug>SendSelectionToTmux
-"nmap <Space><Space> <Plug>NormalModeSendToTmux
-"nmap <Space>r <Plug>SetTmuxVars
-"
-"nmap <C-c> <Plug>ExecuteKeysCc
-"nmap <C-l> <Plug>ExecuteKeysCl
-"nmap <Leader>sk <Plug>ExecuteKeysPrompt
+
+" One possible way to map keys in .vimrc.
+ 
+" " Key definition for SendToTmux() <Plug>.
+" vmap <Space><Space> <Plug>SendSelectionToTmux
+" 
+" " Key definition for SendSelectionToTmux() <Plug>.
+" nmap <Space><Space> <Plug>NormalModeSendToTmux
+" 
+" " Key definition for SetTmuxVars() <Plug>
+" nmap <Space>r <Plug>SetTmuxVars
+" 
+" " Key definition for "C-c" and "C-l" shortcuts.
+" nmap <C-c> <Plug>ExecuteKeysCc
+" nmap <C-l> <Plug>ExecuteKeysCl
+" 
+" " Key definition for ExecuteKeysPrompt() <Plug>.
+" nmap <Leader>sk <Plug>ExecuteKeysPlug
+" 
+" " Key definition for SendToTmuxPrompt() <Plug>.
+" nmap <Leader>sp <Plug>SendTextToTmuxPlug
