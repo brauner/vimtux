@@ -43,6 +43,9 @@ endfunction
 function! SendToTmuxPrompt()
     call inputsave()
     let  l:text = input("Enter Text: ")
+    if empty(l:text)
+        return
+    endif
     call inputrestore()
     call SendToTmux(l:text)
     call ExecuteKeys("Enter")
