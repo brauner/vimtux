@@ -34,7 +34,7 @@ endfunction
 " Function to send a key that asks for user input.
 function! ExecuteKeysPrompt()
     call inputsave()
-    let l:command = input("Enter Keycode: ")
+    let  l:command = input("Enter Keycode: ")
     call inputrestore()
     call ExecuteKeys(l:command)
 endfunction
@@ -42,7 +42,7 @@ endfunction
 " Function to send text that asks for user input.
 function! SendToTmuxPrompt()
     call inputsave()
-    let l:text = input("Enter Text: ")
+    let  l:text = input("Enter Text: ")
     call inputrestore()
     call SendToTmux(l:text)
     call ExecuteKeys("Enter")
@@ -60,7 +60,6 @@ function! SendToTmux(text)
             call <SID>TmuxVars()
         end
     end
-
     let oldbuffer = system(shellescape("tmux show-buffer"))
     call <SID>SetTmuxBuffer(a:text)
     call system("tmux paste-buffer -t " . s:TmuxTarget())
@@ -72,12 +71,8 @@ function! s:TmuxTarget()
 endfunction
 
 function! s:SetTmuxBuffer(text)
-    let buf = substitute(a:text, "'", "\\'", 'g')
+    let  buf = substitute(a:text, "'", "\\'", 'g')
     call system("tmux load-buffer -", buf)
-endfunction
-
-function! SendTmux(text)
-    call SendToTmux(a:text)
 endfunction
 
 " Session completion.
