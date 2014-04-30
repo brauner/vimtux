@@ -1,9 +1,9 @@
 " File: tslime.vim
-" Code by: C. Coutinho <kikijump [at] gmail [dot] com>,
-"          C. Brauner <christianvanbrauner [at] gmail [dot] com>,
-"          K. Borges <kassioborges [at] gmail [dot] com>
-" Maintainer: C.Coutinho <kikijump [at] gmail [dot] com>
-" Last edited: 2014-04-26T11:56+01:00
+" Code: C. Coutinho <kikijump [at] gmail [dot] com>,
+"       C. Brauner <christianvanbrauner [at] gmail [dot] com>,
+"       K. Borges <kassioborges [at] gmail [dot] com>
+" Maintainer: C. Brauner <christianvanbrauner [at] gmail [dot] com>
+" Last edited: 2014-05-01T00:46:38+0200
 
 if exists("g:loaded_tslime") && g:loaded_tslime
     finish
