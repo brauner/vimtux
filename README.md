@@ -13,8 +13,6 @@ account.
 branch. The version available in that branch isn't aware of panes so it
 will paste to pane 0 of the window.
 
-Setting Keybindings
--------------------
 
 (1) This fork provides the ability to send multiple keys to a tmux target
 at once.
@@ -27,6 +25,10 @@ tab in which you edit an R script and send text and keys to an R repl.)
 (3) In this fork of tslime.vim, keybindings are not set automatically
 for you. Instead, you can map whatever you'd like to one of the
 plugin-specific bindings in your `.vimrc` file.
+
+
+Setting Keybindings
+-------------------
 
 To get the old defaults, put the following in your `.vimrc`:
 
