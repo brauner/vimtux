@@ -2,8 +2,8 @@
 " Code by: C. Coutinho <kikijump [at] gmail [dot] com>,
 "          C. Brauner <christianvanbrauner [at] gmail [dot] com>,
 "          K. Borges <kassioborges [at] gmail [dot] com>
-" Maintainer: C.Coutinho <kikijump [at] gmail [dot] com>
-" Last edited: 2014-04-26T11:56+01:00
+" Maintainer: C. Brauner <christianvanbrauner [at] gmail [dot] com>,
+" Last edited: 2014-05-03T00:35:06+0200
 
 if exists("g:loaded_tslime") && g:loaded_tslime
     finish
