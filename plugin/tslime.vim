@@ -1,9 +1,9 @@
 " File: tslime.vim
-" Code: C. Coutinho <kikijump [at] gmail [dot] com>,
-"       C. Brauner <christianvanbrauner [at] gmail [dot] com>,
-"       K. Borges <kassioborges [at] gmail [dot] com>
-" Maintainer: C. Brauner <christianvanbrauner [at] gmail [dot] com>
-" Last edited: 2014-05-01T00:46:38+0200
+" Code by: C. Coutinho <kikijump [at] gmail [dot] com>,
+"          C. Brauner <christianvanbrauner [at] gmail [dot] com>,
+"          K. Borges <kassioborges [at] gmail [dot] com>
+" Maintainer: C.Coutinho <kikijump [at] gmail [dot] com>
+" Last edited: 2014-04-26T11:56+01:00
 
 if exists("g:loaded_tslime") && g:loaded_tslime
     finish
@@ -156,9 +156,14 @@ nmap <unique> <Plug>NormalModeSendToTmux V <Plug>SendSelectionToTmux
 " <Plug> definition for SetTmuxVars().
 nmap <unique> <Plug>SetTmuxVars :call <SID>TmuxVars()<CR>
 
-" <Plug> definition for "C-c" and "C-l" shortcuts.
-nmap <unique> <Plug>ExecuteKeysCc :call ExecuteKeys("C-c")<CR>
-nmap <unique> <Plug>ExecuteKeysCl :call ExecuteKeys("C-l")<CR>
+" <Plug> definition for "C-c" shortcut.
+nmap <unique> <Plug>ExecuteKeysCc :call ExecuteKeys("c-c")<CR>
+
+" <Plug> definition for "C-l" shortcut.
+nmap <unique> <Plug>ExecuteKeysCl :call ExecuteKeys("c-l")<CR>
+
+" <Plug> definition for "C-l" shortcut in bash vi editing mode.
+nmap <unique> <Plug>ExecuteKeysCv :call ExecuteKeys("c-[ c-l i")<CR>
 
 
 " <Plug> definition for ExecuteKeysPrompt().
@@ -181,12 +186,23 @@ command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 " " Key definition for SetTmuxVars() <Plug>
 " nmap <Space>r <Plug>SetTmuxVars
 " 
-" " Key definition for "C-c" and "C-l" shortcuts.
+" " Key definition for "C-c" shortcut.
 " nmap <C-c> <Plug>ExecuteKeysCc
+"
+" " Key definition for "C-l" shortcut.
 " nmap <C-l> <Plug>ExecuteKeysCl
+"
+" " Key definition for "C-l" shortcut in bash vi editing mode.
+" nmap <C-v> <Plug>ExecuteKeysCv
 " 
 " " Key definition for ExecuteKeysPrompt() <Plug>.
 " nmap <Leader>sk <Plug>ExecuteKeysPlug
 " 
 " " Key definition for SendToTmuxPrompt() <Plug>.
 " nmap <Leader>sp <Plug>SendTextToTmuxPlug
+"
+" " Key definition for ExecuteKeysPrompt() <Plug>.
+" nmap <Leader>sk <Plug>ExecuteKeysPlug
+" 
+" " Key definition for SendToTmuxPrompt() <Plug>.
+" nmap <Leader>sp <Plug>SendToTmuxPlug
