@@ -4,6 +4,7 @@
 "          K. Borges <kassioborges [at] gmail [dot] com>
 " Maintainer: C. Brauner <christianvanbrauner [at] gmail [dot] com>,
 " Last edited: 2014-05-03T00:35:06+0200
+" License: GPLv3
 
 if exists("g:loaded_tslime") && g:loaded_tslime
     finish
