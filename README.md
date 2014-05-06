@@ -42,7 +42,7 @@ tmux status bar with the option `#D`; e.g.: `set -g status-left #D`. (All
 possible options about what to display in the statusbar can be found via
 `man tmux` or some internet searching.)
 
-(3) In this fork of tslime.vim, keybindings are not set automatically
+(4) In this fork of tslime.vim, keybindings are not set automatically
 for you. Instead, you can map whatever you'd like to one of the
 plugin-specific bindings in your `.vimrc` file.
 
