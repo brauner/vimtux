@@ -69,8 +69,13 @@ function! SendToTmux(text)
     call <SID>SetTmuxBuffer(oldbuffer)
 endfunction
 
+" Setting the target.
 function! s:TmuxTarget()
+    if len(b:tslime['pane']) == 1
     return '"' . b:tslime['session'] . '":' . b:tslime['window'] . "." . b:tslime['pane']
+else 
+    return b:tslime['pane']
+end
 endfunction
 
 function! s:SetTmuxBuffer(text)
