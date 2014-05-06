@@ -42,6 +42,21 @@ tmux status bar with the option `#D`; e.g.: `set -g status-left #D`. (All
 possible options about what to display in the statusbar can be found via
 `man tmux` or some internet searching.)
 
+I suggest using something like this in your `.tmux.conf`:
+`set -g status-right ' #S | #W:#I | #D:#T:#P'` which gives you: `#S :=
+session title`, `#W := window title`, `#I := window index`, `#D := unique
+session number`, `#T := pane title`, `#P := dynamic session number`. The
+characters `|` and `:` are just used to provide visibility. `|` seperates
+by type of information and `:` groups information within the different
+types.
+
+A last hint: If you fancy it you can rename panes. Just issue `printf
+'\033]2;%s\033\\' 'hello'` in any pane and observe how `#T` will change.
+
+(For fun: Consider including `#D` and `#P` in your statusbar for a moment
+in order to see how tmux changes the dynamic window number for every pane
+that comes after the one you just opened and how `#D` stays fixed.)
+
 (4) In this fork of tslime.vim, keybindings are not set automatically
 for you. Instead, you can map whatever you'd like to one of the
 plugin-specific bindings in your `.vimrc` file.
