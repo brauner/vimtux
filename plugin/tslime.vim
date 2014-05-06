@@ -199,7 +199,7 @@ command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 " nmap <C-l> <Plug>ExecuteKeysCl
 "
 " " Key definition for "C-l" shortcut in bash vi editing mode.
-" nmap <C-v> <Plug>ExecuteKeysCv
+" nmap <C-x> <Plug>ExecuteKeysCv
 " 
 " " Key definition for ExecuteKeysPrompt() <Plug>.
 " nmap <Leader>sk <Plug>ExecuteKeysPlug
