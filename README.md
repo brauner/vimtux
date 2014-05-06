@@ -63,4 +63,4 @@ nmap <your_key_combo> :Tmux <your_command><CR>
 ```
 
 More info about the `<Plug>` and other mapping syntax can be found
-[here](http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_3\) ).
+[here](http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_3) ).
