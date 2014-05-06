@@ -22,6 +22,26 @@ Vim can have its own tmux target. (E.g. you could have a tab in which you
 edit a Python script and send text and keys to a Python repl and another
 tab in which you edit an R script and send text and keys to an R repl.)
 
+(3) This fork allows you to refer to panes either via their dynamic
+identifier which is a simple number. Or via their unique identifier which
+is a number prefixed with `%`.
+
+a) Demonstrative Reference/Dynamic Reference: If you choose to refer to a
+pane via its dynamic identifier the target of any given send function in
+this script will change when you insert a new pane before the pane you
+used.
+
+b) Proper Name/Static Reference: If you choose to refer to a pane via its
+unique identifier the target of any given send function in this script
+will stay fixed.
+
+Tip: You can find out the unique identifier of a pane by either passing
+`tmux list-panes -t x` where `x` is the name of the session. Or (the
+easier way) you let the unique identifier of every pane be shown in your
+tmux status bar with the option `#D`; e.g.: `set -g status-left #D`. (All
+possible options about what to display in the statusbar can be found via
+`man tmux` or some internet searching.)
+
 (3) In this fork of tslime.vim, keybindings are not set automatically
 for you. Instead, you can map whatever you'd like to one of the
 plugin-specific bindings in your `.vimrc` file.
