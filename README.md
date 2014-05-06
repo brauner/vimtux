@@ -38,14 +38,14 @@ will stay fixed.
 Tip: You can find out the unique identifier of a pane by either passing
 `tmux list-panes -t x` where `x` is the name of the session. Or (the
 easier way) you let the unique identifier of every pane be shown in your
-tmux status bar with the option `#D`; e.g.: `set -g status-left #D`. (All
-possible options about what to display in the statusbar can be found via
-`man tmux` or some internet searching.)
+tmux status bar with the option `#D`; e.g.: `set -g status-left '#D'`.
+(All possible options about what to display in the statusbar can be found
+via `man tmux` or some internet searching.)
 
-I suggest using something like this in your `.tmux.conf`:
-`set -g status-right ' #S | #W:#I | #D:#T:#P'` which gives you: `#S :=
-session title`, `#W := window title`, `#I := window index`, `#D := unique
-session number`, `#T := pane title`, `#P := dynamic session number`. The
+I suggest using something like this in your `.tmux.conf`: `set -g
+status-right '#S | #W:#I | #D:#T:#P'` which gives you: `#S := session
+title`, `#W := window title`, `#I := window index`, `#D := unique session
+number`, `#T := pane title`, `#P := dynamic session number`. The
 characters `|` and `:` are just used to provide visibility. `|` seperates
 by type of information and `:` groups information within the different
 types.
