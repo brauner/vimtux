@@ -44,22 +44,23 @@ via `man tmux` or some internet searching.)
 
 I suggest using something like this in your `.tmux.conf`:
 \# Status bar.
+
 `set -g status-interval 2`
 
 `set -g status-right '[#D|#P|#T] '`
 
 \# set-option -g status-left-length 30
+
 `set -g status-left '[#{session_id}|#S]'`
 
 `set-option -g status-justify centre`
 
 \# Disable showing the default window list component and trim it to a more
 \# specific format.
-`set-window-option -g window-status-current-format`
 
-`'[#F|#{window_id}|#I|#W|#{window_panes}]' set-window-option -g`
+`set-window-option -g window-status-current-format '[#F|#{window_id}|#I|#W|#{window_panes}]'`
 
-`window-status-format '[#F|#{window_id}|#I|#W|#{window_panes}]'`
+`set-window-option -g window-status-format '[#F|#{window_id}|#I|#W|#{window_panes}]'`
 
 which gives you: `#{session_id} := unique session ID`, `#S := session
 title`, `#F := window flags` (Info about which windows is active etc.),
