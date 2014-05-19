@@ -50,8 +50,6 @@ I suggest using something like this in your `.tmux.conf`:
 
 `set -g status-right '[#D|#P|#T] '`
 
-\# set-option -g status-left-length 30
-
 `set -g status-left '[#{session_id}|#S]'`
 
 `set-option -g status-justify centre`
