@@ -42,13 +42,27 @@ tmux status bar with the option `#D`; e.g.: `set -g status-left '#D'`.
 (All possible options about what to display in the statusbar can be found
 via `man tmux` or some internet searching.)
 
-I suggest using something like this in your `.tmux.conf`: `set -g
-status-right '#S | #W:#I | #D:#T:#P'` which gives you: `#S := session
-title`, `#W := window title`, `#I := window index`, `#D := unique session
-number`, `#T := pane title`, `#P := dynamic session number`. The
-characters `|` and `:` are just used to provide visibility. `|` seperates
-by type of information and `:` groups information within the different
-types.
+I suggest using something like this in your `.tmux.conf`:
+\# Status bar.
+set -g status-interval 2
+set -g status-right '[#D|#P|#T] '
+\# set-option -g status-left-length 30
+set -g status-left '[#{session_id}|#S]'
+set-option -g status-justify centre
+
+\# Disable showing the default window list component and trim it to a more
+\# specific format.
+set-window-option -g window-status-current-format
+'[#F|#{window_id}|#I|#W|#{window_panes}]' set-window-option -g
+window-status-format '[#F|#{window_id}|#I|#W|#{window_panes}]'
+
+which gives you: `#{session_id} := unique session ID`, `#S := session
+title`, `#F := window flags` (Info about which windows is active etc.),
+`#{window_id} := unique window ID`, `#I := window index`, #W := window
+title`, `#{window_panes} := number of active panes in current window`, `#D
+:= unique pane number`, `#P := dynamic pane number`, `#T := pane title`,
+The characters `[`, `]` and `|` are just used to secure visibility and do
+not have any further meaning.
 
 A last hint: If you fancy it you can rename panes. Just issue `printf
 '\033]2;%s\033\\' 'hello'` in any pane and observe how `#T` will change.
