@@ -43,6 +43,7 @@ tmux status bar with the option `#D`; e.g.: `set -g status-left '#D'`.
 via `man tmux` or some internet searching.)
 
 I suggest using something like this in your `.tmux.conf`:
+
 \# Status bar.
 
 `set -g status-interval 2`
@@ -56,7 +57,7 @@ I suggest using something like this in your `.tmux.conf`:
 `set-option -g status-justify centre`
 
 \# Disable showing the default window list component and trim it to a more
-\# specific format.
+specific format.
 
 `set-window-option -g window-status-current-format '[#F|#{window_id}|#I|#W|#{window_panes}]'`
 
