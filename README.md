@@ -63,7 +63,7 @@ specific format.
 
 which gives you: `#{session_id} := unique session ID`, `#S := session
 title`, `#F := window flags` (Info about which windows is active etc.),
-`#{window_id} := unique window ID`, `#I := window index`, #W := window
+`#{window_id} := unique window ID`, `#I := window index`, `#W := window
 title`, `#{window_panes} := number of active panes in current window`, `#D
 := unique pane number`, `#P := dynamic pane number`, `#T := pane title`,
 The characters `[`, `]` and `|` are just used to secure visibility and do
