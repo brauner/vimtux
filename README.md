@@ -22,18 +22,38 @@ Vim can have its own tmux target. (E.g. you could have a tab in which you
 edit a Python script and send text and keys to a Python repl and another
 tab in which you edit an R script and send text and keys to an R repl.)
 
-(3) This fork allows you to refer to panes either via their dynamic
-identifier which is a simple number. Or via their unique identifier which
-is a number prefixed with `%`.
+(3) This fork allows you to refer to panes and windows either via their
+dynamic identifier which is a simple number. Or via their unique
+identifier. For panes their unique identifier is a number prefixed with
+`%` and for windows a number prefixed with `@`.
 
-a) Demonstrative Reference/Dynamic Reference: If you choose to refer to a
-pane via its dynamic identifier the target of any given send function in
-this script will change when you insert a new pane before the pane you
-used.
+a) Demonstrative Reference/Dynamic Reference:
+
+· Panes: If you choose to refer to a pane via its dynamic identifier the
+target of any given send function in this script will change when you
+insert a new pane before the pane you used.
+
+· Windows (slightly more complex to explain): Assume you have set
+`set-window-option -g automatic-rename on` in your `~/.tmux.conf`. This is
+quite useful when you want to have an easy way of seeing what program is
+currently running in any given tmux window. But it is not very useful when
+you switch programs in a tmux window a lot but still want to be able to
+send commands and keys from the same window or pane to these different
+programs. Because refering to the window via its name given to it by the
+program currently running will break the connection between the window
+running the program and the window you are sending commands and keys from
+once that program is exited and another one is started.
+
+If you choose to refer to a window by its name
 
 b) Proper Name/Static Reference: If you choose to refer to a pane via its
 unique identifier the target of any given send function in this script
 will stay fixed.
+
+b) Proper Name/Static Reference: If you choose to refer to a window via
+its unique identifier the target of any given send function in this script
+will stay fixed while allowing that the program currently running in that
+window is setting the name for that session.
 
 Tip: You can find out the unique identifier of a pane by either passing
 `tmux list-panes -t x` where `x` is the name of the session. Or (the
