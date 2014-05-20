@@ -42,9 +42,7 @@ send commands and keys from the same window or pane to these different
 programs. Because refering to the window via its name given to it by the
 program currently running will break the connection between the window
 running the program and the window you are sending commands and keys from
-once that program is exited and another one is started.
-
-If you choose to refer to a window by its name
+once that program is exited.
 
 b) Proper Name/Static Reference: If you choose to refer to a pane via its
 unique identifier the target of any given send function in this script
