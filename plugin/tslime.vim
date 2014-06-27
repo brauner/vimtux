@@ -125,9 +125,9 @@ function! s:TmuxVars()
     else
         let b:tslime['session'] = ''
     endif
-    while b:tslime['session'] == ''
+    if b:tslime['session'] == ''
         let b:tslime['session'] = input("session name: ", "", "custom,TmuxSessionNames")
-    endwhile
+    endif
 
     let windows = split(s:TmuxWindows(), "\n")
     if len(windows) == 1
