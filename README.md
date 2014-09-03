@@ -98,7 +98,6 @@ that comes after the one you just opened and how `#D` stays fixed.)
 for you. Instead, you can map whatever you'd like to one of the
 plugin-specific bindings in your `.vimrc` file.
 
-
 Setting Keybindings
 -------------------
 
@@ -136,3 +135,12 @@ nmap <your_key_combo> :Tmux <your_command><CR>
 
 More info about the `<Plug>` and other mapping syntax can be found
 [here](http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_3) ).
+
+Tip
+--
+
+You don't need to be in a `tmux` session in order to send text or keys to
+another tmux session. The only requirement is that you are in a `vim`
+session. Hence, you can send keys to any `tmux` session from any
+(non-`tmux`) `vim` session.
+session.
