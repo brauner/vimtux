@@ -1,7 +1,7 @@
 vimtux
 ==========
 
-this is a simple vim script to send text, commands and keys from a Vim
+this is a simple Vim script to send text, commands and keys from a Vim
 buffer to a running tmux session. its main objective is to stay as simple
 as possible following the famous KISS principle. This means it does not
 rely on the presence of any external files, programming languages
