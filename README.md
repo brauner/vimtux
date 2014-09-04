@@ -1,8 +1,8 @@
 vimtux
 ==========
 
-This is a simple vim script to send text, commands and keys from a vim
-buffer to a running tmux session. Its main objective is to stay as simple
+this is a simple vim script to send text, commands and keys from a Vim
+buffer to a running tmux session. its main objective is to stay as simple
 as possible following the famous KISS principle. This means it does not
 rely on the presence of any external files, programming languages
 whatsoever and it will stay that way. Forever. Period. It does exactly
@@ -13,15 +13,15 @@ any Tmux session via Vim. You will find the details below.
 branch. The version available in that branch isn't aware of panes so it
 will paste to pane 0 of the window.
 
-(1) This fork provides the ability to send multiple keys to a tmux target
-at once.
+(1) vimtux provides the ability to send multiple keys to a tmux target at
+once.
 
 (2) The tmux target is set on buffer basis. This means that every tab in
 Vim can have its own tmux target. (E.g. you could have a tab in which you
 edit a Python script and send text and keys to a Python repl and another
 tab in which you edit an R script and send text and keys to an R repl.)
 
-(3) This fork allows you to refer to panes and windows either via their
+(3) vimtux allows you to refer to panes and windows either via their
 dynamic identifier which is a simple number. Or via their unique
 identifier. For panes their unique identifier is a number prefixed with
 `%` and for windows a number prefixed with `@`.
@@ -93,9 +93,9 @@ A last hint: If you fancy it you can rename panes. Just issue `printf
 in order to see how tmux changes the dynamic window number for every pane
 that comes after the one you just opened and how `#D` stays fixed.)
 
-(4) In this fork of vimtux, keybindings are not set automatically
-for you. Instead, you can map whatever you'd like to one of the
-plugin-specific bindings in your `.vimrc` file.
+(4) Keybindings are not set automatically for you. Instead, you can map
+whatever you'd like to one of the plugin-specific bindings in your
+`.vimrc` file.
 
 Setting Keybindings
 -------------------
