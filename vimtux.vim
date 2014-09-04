@@ -1,9 +1,8 @@
 " File: tslime.vim
-" Code by: C. Coutinho <kikijump [at] gmail [dot] com>,
-"          C. Brauner <christianvanbrauner [at] gmail [dot] com>,
+" Code by: C. Brauner <christianvanbrauner [at] gmail [dot] com>,
+"          C. Coutinho <kikijump [at] gmail [dot] com>,
 "          K. Borges <kassioborges [at] gmail [dot] com>
 " Maintainer: C. Brauner <christianvanbrauner [at] gmail [dot] com>,
-" License: GPLv3
 
 if exists("g:loaded_tslime") && g:loaded_tslime
     finish
@@ -179,9 +178,8 @@ nmap <unique> <Plug>SendToTmuxPlug :call SendToTmuxPrompt()<CR>
 
 command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 
-
-" One possible way to map keys in .vimrc.
- 
+" " One possible way to map keys in .vimrc.
+" " tslime.vim variables.
 " " Key definition for SendToTmux() <Plug>.
 " vmap <Space><Space> <Plug>SendSelectionToTmux
 " 
@@ -193,11 +191,11 @@ command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 " 
 " " Key definition for "C-c" shortcut.
 " nmap <C-c> <Plug>ExecuteKeysCc
-"
-" " Key definition for "C-l" shortcut.
-" nmap <C-l> <Plug>ExecuteKeysCl
-"
+" 
 " " Key definition for "C-l" shortcut in bash vi editing mode.
+" nmap <C-l> <Plug>ExecuteKeysCl
+" 
+" " Key definition for "C-l" shortcut.
 " nmap <C-x> <Plug>ExecuteKeysCv
 " 
 " " Key definition for ExecuteKeysPrompt() <Plug>.
@@ -205,7 +203,7 @@ command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 " 
 " " Key definition for SendToTmuxPrompt() <Plug>.
 " nmap <Leader>sp <Plug>SendTextToTmuxPlug
-"
+" 
 " " Key definition for ExecuteKeysPrompt() <Plug>.
 " nmap <Leader>sk <Plug>ExecuteKeysPlug
 " 
