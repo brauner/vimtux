@@ -1,4 +1,4 @@
-vimtux.vim
+vimtux
 ==========
 
 This is a simple vim script to send text, commands and keys from a vim
@@ -89,7 +89,7 @@ A last hint: If you fancy it you can rename panes. Just issue `printf
 in order to see how tmux changes the dynamic window number for every pane
 that comes after the one you just opened and how `#D` stays fixed.)
 
-(4) In this fork of vimtux.vim, keybindings are not set automatically
+(4) In this fork of vimtux, keybindings are not set automatically
 for you. Instead, you can map whatever you'd like to one of the
 plugin-specific bindings in your `.vimrc` file.
 
