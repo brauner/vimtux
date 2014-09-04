@@ -2,12 +2,16 @@ vimtux
 ==========
 
 This is a simple vim script to send text, commands and keys from a vim
-buffer to a running tmux session.
+buffer to a running tmux session. Its main objective is to stay as simple
+as possible following the famous KISS principle. This means it does not
+rely on the presence of any external files, programming languages
+whatsoever and it will stay that way. Forever. Period. It does exactly
+what it was designed for no more no less: Send text, commands and keys to
+any Tmux session via Vim. You will find the details below.
 
 **Note:** If you use version of tmux ealier than 1.3, you should use the stable
 branch. The version available in that branch isn't aware of panes so it
 will paste to pane 0 of the window.
-
 
 (1) This fork provides the ability to send multiple keys to a tmux target
 at once.
