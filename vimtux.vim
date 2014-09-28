@@ -123,8 +123,11 @@ function! s:TmuxVars()
     else
         let b:tslime['session'] = ''
     endif
-    if b:tslime['session'] == ''
+    if empty(b:tslime['session'])
         let b:tslime['session'] = input("session name: ", "", "custom,TmuxSessionNames")
+    endif
+    if b:tslime['session'] == 'ESC'
+        break
     endif
 
     let windows = split(s:TmuxWindows(), "\n")
@@ -132,7 +135,7 @@ function! s:TmuxVars()
         let window = windows[0]
     else
         let window = input("window name: ", "", "custom,TmuxWindowNames")
-        if window == ''
+        if empty(window)
             let window = windows[0]
         endif
     endif
@@ -144,7 +147,7 @@ function! s:TmuxVars()
         let b:tslime['pane'] = panes[0]
     else
         let b:tslime['pane'] = input("pane number: ", "", "custom,TmuxPaneNumbers")
-        if b:tslime['pane'] == ''
+        if empty(b:tslime['pane'])
             let b:tslime['pane'] = panes[0]
         endif
     endif
