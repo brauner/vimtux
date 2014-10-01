@@ -124,17 +124,18 @@ function! s:TmuxVars()
         let b:tslime['session'] = ''
     endif
     if empty(b:tslime['session'])
+        call inputsave()
         let b:tslime['session'] = input("session name: ", "", "custom,TmuxSessionNames")
-    endif
-    if b:tslime['session'] == 'ESC'
-        break
+        call inputrestore()
     endif
 
     let windows = split(s:TmuxWindows(), "\n")
     if len(windows) == 1
         let window = windows[0]
     else
+        call inputsave()
         let window = input("window name: ", "", "custom,TmuxWindowNames")
+        call inputrestore()
         if empty(window)
             let window = windows[0]
         endif
