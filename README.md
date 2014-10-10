@@ -142,4 +142,3 @@ You don't need to be in a `tmux` session in order to send text or keys to
 another tmux session. The only requirement is that you are in a `vim`
 session. Hence, you can send keys to any `tmux` session from any
 (non-`tmux`) `vim` session.
-session.
