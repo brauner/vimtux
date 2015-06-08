@@ -1,22 +1,22 @@
-" File: tslime.vim
+" File: vimtux.vim
 " Code by: C. Brauner <christianvanbrauner [at] gmail [dot] com>,
 "          C. Coutinho <kikijump [at] gmail [dot] com>,
 "          K. Borges <kassioborges [at] gmail [dot] com>
 " Maintainer: C. Brauner <christianvanbrauner [at] gmail [dot] com>,
 
-if exists("g:loaded_tslime") && g:loaded_tslime
+if exists("g:loaded_vimtux") && g:loaded_vimtux
     finish
 endif
 
-let g:loaded_tslime = 1
+let g:loaded_vimtux = 1
 
 " Send keys to tmux.
 function! ExecuteKeys(keys)
-    if !exists("b:tslime")
-        if exists("g:tslime")
+    if !exists("b:vimtux")
+        if exists("g:vimtux")
             " This bit sets the target on buffer basis so every tab can have its
             " own target.
-            let b:tslime = g:tslime
+            let b:vimtux = g:vimtux
         else
             call <SID>TmuxVars()
         end
@@ -53,11 +53,11 @@ endfunction
 
 " Main function.
 function! SendToTmux(text)
-    if !exists("b:tslime")
-        if exists("g:tslime")
+    if !exists("b:vimtux")
+        if exists("g:vimtux")
             " This bit sets the target on buffer basis so every tab can have its
             " own target.
-            let b:tslime = g:tslime
+            let b:vimtux = g:vimtux
         else
             call <SID>TmuxVars()
         end
@@ -70,10 +70,10 @@ endfunction
 
 " Setting the target.
 function! s:TmuxTarget()
-    if len(b:tslime['pane']) == 1
-    return '"' . b:tslime['session'] . '":' . b:tslime['window'] . "." . b:tslime['pane']
+    if len(b:vimtux['pane']) == 1
+    return '"' . b:vimtux['session'] . '":' . b:vimtux['window'] . "." . b:vimtux['pane']
 else 
-    return b:tslime['pane']
+    return b:vimtux['pane']
 end
 endfunction
 
@@ -103,29 +103,29 @@ function! s:TmuxSessions()
 endfunction
 
 " To set the TmuxTarget globally rather than locally substitute 'g:' for all
-" instances of 'b:' below and delete the 'if exists("g:tslime") let b:tslime =
-" g:tslime' condition in the definition of the 'SendToTmux(text)' function
+" instances of 'b:' below and delete the 'if exists("g:vimtux") let b:vimtux =
+" g:vimtux' condition in the definition of the 'SendToTmux(text)' function
 " above.
 function! s:TmuxWindows()
-    return system('tmux list-windows -t "' . b:tslime['session'] . '" | grep -e "^\w:" | sed -e "s/\s*([0-9].*//g"')
+    return system('tmux list-windows -t "' . b:vimtux['session'] . '" | grep -e "^\w:" | sed -e "s/\s*([0-9].*//g"')
 endfunction
 
 function! s:TmuxPanes()
-    return system('tmux list-panes -t "' . b:tslime['session'] . '":' . b:tslime['window'] . " | sed -e 's/:.*$//'")
+    return system('tmux list-panes -t "' . b:vimtux['session'] . '":' . b:vimtux['window'] . " | sed -e 's/:.*$//'")
 endfunction
 
 " Set variables for TmuxTarget().
 function! s:TmuxVars()
     let names = split(s:TmuxSessions(), "\n")
-    let b:tslime = {}
+    let b:vimtux = {}
     if len(names) == 1
-        let b:tslime['session'] = names[0]
+        let b:vimtux['session'] = names[0]
     else
-        let b:tslime['session'] = ''
+        let b:vimtux['session'] = ''
     endif
-    while empty(b:tslime['session'])
+    while empty(b:vimtux['session'])
         call inputsave()
-        let b:tslime['session'] = input("session name: ", "", "custom,TmuxSessionNames")
+        let b:vimtux['session'] = input("session name: ", "", "custom,TmuxSessionNames")
         call inputrestore()
     endwhile
 
@@ -141,15 +141,15 @@ function! s:TmuxVars()
         endif
     endif
 
-    let b:tslime['window'] =  substitute(window, ":.*$" , '', 'g')
+    let b:vimtux['window'] =  substitute(window, ":.*$" , '', 'g')
 
     let panes = split(s:TmuxPanes(), "\n")
     if len(panes) == 1
-        let b:tslime['pane'] = panes[0]
+        let b:vimtux['pane'] = panes[0]
     else
-        let b:tslime['pane'] = input("pane number: ", "", "custom,TmuxPaneNumbers")
-        if empty(b:tslime['pane'])
-            let b:tslime['pane'] = panes[0]
+        let b:vimtux['pane'] = input("pane number: ", "", "custom,TmuxPaneNumbers")
+        if empty(b:vimtux['pane'])
+            let b:vimtux['pane'] = panes[0]
         endif
     endif
 endfunction
@@ -183,7 +183,7 @@ nmap <unique> <Plug>SendToTmuxPlug :call SendToTmuxPrompt()<CR>
 command! -nargs=* Tmux call SendToTmux('<Args><CR>')
 
 " " One possible way to map keys in .vimrc.
-" " tslime.vim variables.
+" " vimtux.vim variables.
 " " Key definition for SendToTmux() <Plug>.
 " vmap <Space><Space> <Plug>SendSelectionToTmux
 " 
